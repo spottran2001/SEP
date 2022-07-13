@@ -3,12 +3,9 @@ import bodyParser  from "body-parser";
 import cors from "cors";
 import mongoose  from "mongoose";
 import accounts from './routers/accounts.js';
-import dotenv from 'dotenv';
-import path from "path";
 
-dotenv.config();
 const app = express();
-const PORT = process.env.HOST || 3101;
+const PORT = 3101;
 
 const URI = "mongodb+srv://admin:s3bq4UOIELOJPAOA@cluster0.nffpq.mongodb.net/?retryWrites=true&w=majority";
 
