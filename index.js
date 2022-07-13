@@ -20,7 +20,7 @@ mongoose
     .then(() => {
         console.log('connected to DB');
         app.listen(PORT, () => {
-            console.log('sever on port ${PORT}');
+            console.log('Wellcome');
         });
     })
     .catch((err) => {
