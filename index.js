@@ -3,7 +3,10 @@ import bodyParser  from "body-parser";
 import cors from "cors";
 import mongoose  from "mongoose";
 import accounts from './routers/accounts.js';
-import dotevn from 'dotenv'
+import dishTypes from './routers/dishTypes.js';
+import dishes from './routers/dishes.js';
+import bills from './routers/bills.js';
+import dotevn from 'dotenv';
 
 dotevn.config();
 const app = express();
@@ -16,6 +19,12 @@ app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
 app.use(cors());
 
 app.use('/accounts', accounts);
+
+app.use('/dishTypes', dishTypes);
+
+app.use('/dishes', dishes);
+
+app.use('/bills', bills);
 
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true})
