@@ -1,5 +1,5 @@
 import express from "express";
-import { getDishTypes, createDishType, updateDishType, deleteDishType, showDishType } from "../controller/DishTypes.js";
+import { getDishTypes, createDishType, updateDishType, deleteDishType, showDishType } from "../controller/dishTypes.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
