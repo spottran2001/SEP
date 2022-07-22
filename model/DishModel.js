@@ -16,17 +16,29 @@ const schema = new mongoose.Schema({
     },
     amount_sell: {
         type: Number,
-        require: true,
+        default: 0,
     },
     recipe: {
+        type: String,
+        require: true,
+    },
+    dish_type: {
         type: Array,
         require: true,
     },
     status:{
         type: Boolean,
-        require: true,
         default: true,
     },
+    avatar:{
+        type: String,
+        require: true,
+    },
+    category_type:{
+        type: Boolean,
+        require: true,
+    }
+
   },
   { timestamps: true, }
 );
