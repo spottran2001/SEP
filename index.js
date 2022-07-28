@@ -3,9 +3,10 @@ import bodyParser  from "body-parser";
 import cors from "cors";
 import mongoose  from "mongoose";
 import accounts from './routers/accounts.js';
-import dishTypes from './routers/dishTypes.js';
+import dishTypes from './routers/dish_types.js';
 import dishes from './routers/dishes.js';
 import bills from './routers/bills.js';
+import storeds from './routers/storeds.js'
 import dotevn from 'dotenv';
 
 dotevn.config();
@@ -25,6 +26,8 @@ app.use('/dishTypes', dishTypes);
 app.use('/dishes', dishes);
 
 app.use('/bills', bills);
+
+app.use('/storeds', storeds);
 
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true})
