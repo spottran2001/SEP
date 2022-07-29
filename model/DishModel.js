@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
         require: true,
     },
     amount: {
-        type: Number,
+        type: String,
         require: true,
         
     },
@@ -32,7 +32,7 @@ const schema = new mongoose.Schema({
     },
     avatar:{
         type: String,
-        require: true,
+        require: false,
     },
     category_type:{
         type: Boolean,

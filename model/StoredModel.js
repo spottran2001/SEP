@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     amount: {
-        type: Number,
+        type: String,
         require: true,
     },
     price: {
@@ -16,6 +16,10 @@ const schema = new mongoose.Schema({
     payment_type:{
         type: String,
         require: true,
+    },
+    avatar:{
+        type: String,
+        require: false,
     },
   },
   { timestamps: true, }

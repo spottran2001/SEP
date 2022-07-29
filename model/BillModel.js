@@ -15,7 +15,7 @@ const schema = new mongoose.Schema({
     },
     payment_type:{
         type: String,
-        require: true,
+        require: false,
     },
   },
   { timestamps: true, }
