@@ -5,6 +5,10 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    category_type_id: {
+      type: String,
+      required: true,
+  },
   },
   { timestamps: true, }
 );
