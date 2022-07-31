@@ -1,21 +1,21 @@
 import express from "express";
-import { getShedules, createShedule, updateShedule, deleteShedule, showShedule } from "../controller/schedules.js";
+import { getSchedules, createSchedule, updateSchedule, deleteSchedule, showSchedule } from "../controller/schedules.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
 
 
 var jsonParser = bodyParser.json()
-// ./Shedules
+// ./Schedules
 
-router.get('/', getShedules);
+router.get('/', getSchedules);
 
-router.post('/', jsonParser, createShedule);
+router.post('/', jsonParser, createSchedule);
 
-router.put('/:id', updateShedule);
+router.put('/:id', updateSchedule);
 
-router.delete('/:id', deleteShedule);
+router.delete('/:id', deleteSchedule);
 
-router.get('/:id', showShedule);
+router.get('/:id', showSchedule);
 
 export default router;
