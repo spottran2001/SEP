@@ -1,5 +1,5 @@
 import express from "express";
-import { getShedules, createShedule, updateShedule, deleteShedule, showShedule } from "../controller/shedules.js";
+import { getShedules, createShedule, updateShedule, deleteShedule, showShedule } from "../controller/schedules.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
