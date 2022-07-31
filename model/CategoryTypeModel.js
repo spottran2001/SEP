@@ -10,3 +10,4 @@ const schema = new mongoose.Schema({
 );
 
 export const CategoryTypeModel = mongoose.model('CategoryType', schema);
+

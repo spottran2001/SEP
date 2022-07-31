@@ -2,12 +2,14 @@ import express  from "express";
 import bodyParser  from "body-parser";
 import cors from "cors";
 import mongoose  from "mongoose";
+import dotevn from 'dotenv';
 import accounts from './routers/accounts.js';
 import dishTypes from './routers/dish_types.js';
 import dishes from './routers/dishes.js';
 import bills from './routers/bills.js';
-import storeds from './routers/storeds.js'
-import dotevn from 'dotenv';
+import storeds from './routers/storeds.js';
+import schedule from './routers/schedule.js';
+
 
 dotevn.config();
 const app = express();
@@ -29,6 +31,7 @@ app.use('/bills', bills);
 
 app.use('/storeds', storeds);
 
+app.use('/schedules', schedule);
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
