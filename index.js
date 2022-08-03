@@ -1,14 +1,16 @@
+import dotevn from 'dotenv';
 import express  from "express";
 import bodyParser  from "body-parser";
 import cors from "cors";
 import mongoose  from "mongoose";
-import dotevn from 'dotenv';
 import accounts from './routers/accounts.js';
 import dishTypes from './routers/dish_types.js';
 import dishes from './routers/dishes.js';
 import bills from './routers/bills.js';
 import storeds from './routers/storeds.js';
 import schedule from './routers/schedule.js';
+import auth from './routers/auth.js';
+import {verifyToken} from'./middleware/auth.js';
 
 
 dotevn.config();
@@ -21,15 +23,17 @@ app.use(bodyParser.json({ limit: '30mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
 app.use(cors());
 
-app.use('/accounts', accounts);
+app.use('/auth', auth);
 
-app.use('/dishTypes', dishTypes);
+app.use('/accounts', verifyToken, accounts);
 
-app.use('/dishes', dishes);
+app.use('/dishTypes', verifyToken, dishTypes);
 
-app.use('/bills', bills);
+app.use('/dishes', verifyToken, dishes);
 
-app.use('/storeds', storeds);
+app.use('/bills', verifyToken, bills);
+
+app.use('/storeds', verifyToken, storeds);
 
 app.use('/schedules', schedule);
 mongoose
@@ -42,5 +46,5 @@ mongoose
     })
     .catch((err) => {
         console.log('err', err);
-    })
+    });
 
