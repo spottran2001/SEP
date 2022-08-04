@@ -10,7 +10,7 @@ var jsonParser = bodyParser.json()
 // ./Billss
 
 router.post('/login', jsonParser, login);
-router.get('/logout', verifyToken, logout);
+router.post('/logout', verifyToken, logout);
 
 
 export default router;
