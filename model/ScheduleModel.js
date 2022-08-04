@@ -1,32 +1,16 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-    monday: {
+    morning: {
         type: Object,
         required: true,
     },
-    tuesday: {
-        type: Object,
-        required: true,
-    },
-    wednesday: {
-        type: Object,
-        required: true,
-    },
-    thursday: {
-        type: Object,
-        required: true,
-    },
-    friday: {
-        type: Object,
-        required: true,
-    },
-    saturday: {
+    afternoon: {
         type: Object,
         required: true,
     },
 
-    sunday: {
+    night : {
         type: Object,
         require: true,
     },

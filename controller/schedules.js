@@ -14,20 +14,20 @@ export const createSchedule = async (req, res) => {
     try {
         const begin_end_date = req.body;
         const data = {
-            casang: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
+            morning: {
+                _id: "0",
+                shift: "Ca sáng",
+                days: []
             },
-            cachieu: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
+            afternoon: {
+                _id: "1",
+                shift: "Ca chiều",
+                days: []
             },
-            catoi: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
+            night : {
+                _id: "2",
+                shift: "Ca tối",
+                days: []
             }
         };
         const newSchedule = Object.assign(begin_end_date, data);
