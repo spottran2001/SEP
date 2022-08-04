@@ -9,7 +9,7 @@ const router = express.Router();
 var jsonParser = bodyParser.json()
 // ./Billss
 
-router.get('/login', jsonParser, login);
+router.post('/login', jsonParser, login);
 router.get('/logout', verifyToken, logout);
 
 

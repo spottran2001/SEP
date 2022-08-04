@@ -38,6 +38,11 @@ const schema = new mongoose.Schema({
         type: Date,
         require: true,
     },
+    status: {
+        type: Boolean,
+        require: true,
+        default: false,
+    }    
   },
   { timestamps: true, }
 );

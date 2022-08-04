@@ -14,37 +14,17 @@ export const createSchedule = async (req, res) => {
     try {
         const begin_end_date = req.body;
         const data = {
-            monday: {
+            casang: {
                 ca1:[],
                 ca2:[],
                 ca3:[]
             },
-            tuesday: {
+            cachieu: {
                 ca1:[],
                 ca2:[],
                 ca3:[]
             },
-            wednesday: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
-            },
-            thursday: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
-            },
-            friday: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
-            },
-            saturday: {
-                ca1:[],
-                ca2:[],
-                ca3:[]
-            },
-            sunday: {
+            catoi: {
                 ca1:[],
                 ca2:[],
                 ca3:[]
