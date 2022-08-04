@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { AccountModel } from "../model/AccountModel.js";
 
 export const verifyToken = (req, res, next) => {
 	const authHeader = req.header('Authorization')
@@ -12,7 +13,8 @@ export const verifyToken = (req, res, next) => {
 	try {
 		const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
 
-		req.userId = decoded.userId
+		req.accountId = decoded.accountId
+		
 		next()
 	} catch (error) {
 		console.log(error)

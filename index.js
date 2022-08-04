@@ -17,7 +17,7 @@ dotevn.config();
 const app = express();
 const PORT = process.env.PORT || 3101;
 
-const URI = "mongodb+srv://admin:s3bq4UOIELOJPAOA@cluster0.nffpq.mongodb.net/?retryWrites=true&w=majority";
+const URI = process.env.MONGO_DB;
 
 app.use(bodyParser.json({ limit: '30mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
