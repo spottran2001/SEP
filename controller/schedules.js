@@ -6,7 +6,7 @@ export const getSchedules = async (req, res) => {
 
         res.status(200).json(schedules);
     } catch (error) {
-        res.status(500).json({ error: err });
+        res.status(500).json({ error: error });
     }
 };
 

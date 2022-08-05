@@ -6,7 +6,7 @@ export const getDishTypes = async (req, res) => {
 
         res.status(200).json(dish_types);
     } catch (error) {
-        res.status(500).json({ error: err });
+        res.status(500).json({ error: error });
     }
 };
 

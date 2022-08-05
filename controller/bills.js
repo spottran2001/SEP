@@ -6,7 +6,7 @@ export const getBills = async (req, res) => {
 
         res.status(200).json(bills);
     } catch (error) {
-        res.status(500).json({ error: err });
+        res.status(500).json({ error: error });
     }
 };
 

@@ -11,7 +11,7 @@ import storeds from './routers/storeds.js';
 import schedule from './routers/schedule.js';
 import auth from './routers/auth.js';
 import {verifyToken} from'./middleware/auth.js';
-
+import {decentralization} from'./middleware/decentralization.js';
 
 dotevn.config();
 const app = express();
@@ -25,7 +25,7 @@ app.use(cors());
 
 app.use('/auth', auth);
 
-app.use('/accounts', verifyToken, accounts);
+app.use('/accounts', verifyToken, decentralization, accounts);
 
 app.use('/dishTypes', verifyToken, dishTypes);
 
@@ -35,7 +35,7 @@ app.use('/bills', verifyToken, bills);
 
 app.use('/storeds', verifyToken, storeds);
 
-app.use('/schedules', schedule);
+app.use('/schedules', verifyToken, schedule);
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {

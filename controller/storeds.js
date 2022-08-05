@@ -6,7 +6,7 @@ export const getStoreds = async (req, res) => {
 
         res.status(200).json(storeds);
     } catch (error) {
-        res.status(500).json({ error: err });
+        res.status(500).json({ error: error });
     }
 };
 
