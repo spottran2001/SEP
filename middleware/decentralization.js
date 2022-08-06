@@ -5,7 +5,7 @@ export const decentralization = async (req, res, next) => {
     try {
         const account = await AccountModel.findById(req.accountId)
 
-        if (account.role != 0)
+        if (account.role != 1)
             return res
                 .status(200)
                 .json({ success: false, message: 'Your permission is not enough to do this' })
