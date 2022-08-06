@@ -7,7 +7,7 @@ export const decentralization = async (req, res, next) => {
 
         if (account.role != 1)
             return res
-                .status(200)
+                .status(403)
                 .json({ success: false, message: 'Your permission is not enough to do this' })
 
         try {
