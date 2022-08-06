@@ -53,5 +53,13 @@ export const showAccount = async (req, res) => {
         res.status(500).json({ error: error });
     }
 };
+export const getStaff = async (req, res) => {
+    try {
+        const staffs = await AccountModel.find({role: 1});
 
+        res.status(200).json(staffs);
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
 

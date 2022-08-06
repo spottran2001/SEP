@@ -1,5 +1,5 @@
 import express from "express";
-import { getAccounts, createAccount, updateAccount, deleteAccount, showAccount } from "../controller/accounts.js";
+import { getAccounts, createAccount, updateAccount, deleteAccount, showAccount, getStaff } from "../controller/accounts.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
@@ -17,5 +17,7 @@ router.put('/:id', updateAccount);
 router.delete('/:id', deleteAccount);
 
 router.get('/:id', showAccount);
+
+router.get('/staff', getStaff);
 
 export default router;
