@@ -46,6 +46,7 @@ export const deleteAccount = async (req, res) => {
 
 export const showAccount = async (req, res) => {
     try {
+
         AccountModel.findById(req.params.id)
         .then((account) => res.json(account))        
     } catch (error) {

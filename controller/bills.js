@@ -12,7 +12,10 @@ export const getBills = async (req, res) => {
 
 export const createBill = async (req, res) => {
     try {
-        const newBill = req.body;
+        const data = req.body;
+        const account_id = {account_id: req.accountId};
+
+        const newBill = Object.assign(account_id, data);
 
         const bill = new BillModel(newBill);
         await bill.save();
@@ -46,11 +49,32 @@ export const deleteBill = async (req, res) => {
 
 export const showBill = async (req, res) => {
     try {
+
+
         BillModel.findById(req.params.id)
         .then((bill) => res.json(bill))        
     } catch (error) {
         res.status(500).json({ error: error });
     }
 };
+export const _3MonthDelete = async (req, res) => {
+    try {
+        var datetime = new Date();
+        datetime.setMonth(datetime.getMonth() + -3);
+        datetime.setDate(1);
+        console.log(datetime)
 
+
+        BillModel.deleteMany({
+            createdAt: {
+                $lt: ISODate(datetime)
+            }
+        })
+        res.json({ success: true, message: 'Happy learning!', current_month: current_month })
+        // BillModel.findByIdAndDelete(req.params.id)
+        // .then(() => res.json("bill deleted"))
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
 

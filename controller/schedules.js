@@ -35,7 +35,6 @@ export const createSchedule = async (req, res) => {
         const schedule = new ScheduleModel(newSchedule);
         await schedule.save();
     
-        console.log(schedule)
         res.status(200).json(schedule);
     } catch (error) {
         res.status(500).json({ error: error });
@@ -66,6 +65,15 @@ export const showSchedule = async (req, res) => {
     try {
         ScheduleModel.findById(req.params.id)
         .then((schedule) => res.json(schedule))        
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
+export const comfirm = async (req, res) => {
+    try {
+        let current_schedule = await ScheduleModel.findById(req.params.id);
+        ScheduleModel.findByIdAndUpdate(req.params.id, {status: !current_schedule.status}, {new: true})
+        .then((schedule) => res.json({status: "ok" ,schedule}));
     } catch (error) {
         res.status(500).json({ error: error });
     }

@@ -1,9 +1,7 @@
 import { AccountModel } from "../model/AccountModel.js";
 
 export const decentralization = async (req, res, next) => {
-
     
-    console.log(req.accountId)
     try {
         const account = await AccountModel.findById(req.accountId)
 
