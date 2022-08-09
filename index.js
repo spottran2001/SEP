@@ -10,8 +10,9 @@ import bills from './routers/bills.js';
 import storeds from './routers/storeds.js';
 import schedule from './routers/schedule.js';
 import auth from './routers/auth.js';
-import {verifyToken} from'./middleware/auth.js';
-import {decentralization} from'./middleware/decentralization.js';
+import {verifyToken} from'./middlewares/auth.js';
+import {decentralization} from'./middlewares/decentralization.js';
+import upload from './routers/upload.js';
 
 dotevn.config();
 const app = express();
@@ -36,6 +37,8 @@ app.use('/bills', verifyToken, bills);
 app.use('/storeds', verifyToken, storeds);
 
 app.use('/schedules', verifyToken, schedule);
+
+app.use('/upload', verifyToken, upload);
 mongoose
     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {

@@ -1,5 +1,5 @@
 import express from "express";
-import { getAccounts, createAccount, updateAccount, deleteAccount, showAccount, getStaff } from "../controller/accounts.js";
+import { getAccounts, createAccount, updateAccount, deleteAccount, showAccount, getStaff } from "../controllers/accounts.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();

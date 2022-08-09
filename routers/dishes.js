@@ -1,5 +1,5 @@
 import express from "express";
-import { getDishes, createDish, updateDish, deleteDish, showDish } from "../controller/dishes.js";
+import { getDishes, createDish, updateDish, deleteDish, showDish } from "../controllers/dishes.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();

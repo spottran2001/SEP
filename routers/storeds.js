@@ -1,5 +1,5 @@
 import express from "express";
-import { getStoreds, createStored, updateStored, deleteStored, showStored } from "../controller/storeds.js";
+import { getStoreds, createStored, updateStored, deleteStored, showStored } from "../controllers/storeds.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
