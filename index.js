@@ -17,13 +17,18 @@ import banks from './routers/banks.js';
 
 dotevn.config();
 const app = express();
+
 const PORT = process.env.PORT || 3101;
 
 const URI = process.env.MONGO_DB;
 
+app.use(cors())
+ app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+
 app.use(bodyParser.json({ limit: '30mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
-app.use(cors());
 
 app.use('/auth', auth);
 
