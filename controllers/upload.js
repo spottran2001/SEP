@@ -18,6 +18,7 @@ export const uploadImage = (req, res) => {
 
     const file = req.file;
     const fileName = Date.now() + "." + file.originalname.split(".").pop();
+    bucket.makePublic();
 
     const fileUpload = bucket.file(fileName);
 
