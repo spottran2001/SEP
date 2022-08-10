@@ -17,7 +17,7 @@ router.post('/', jsonParser, createBank);
 
 router.put('/:id', updateBank);
 
-router.geputt('/:id', updateMorningBank);
+router.put('/:id', updateMorningBank);
 
 router.put('/:id', updateAfternoonBank);
 
