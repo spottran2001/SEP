@@ -1,5 +1,4 @@
-import { BankModel } from "../models/Banks.js";
-import { DishModel } from "../models/DishModel.js";
+import { BillModel } from "../models/BillModel.js";
 
 export const statistics = async (req, res) => {
     try {
@@ -29,25 +28,25 @@ export const statistics = async (req, res) => {
         // }     
         // );
         //const sum_data = await DishModel.find({ recipe:  /1/});
-        const sum_data = await BankModel.aggregate([
-            {$project: {name: 1, price: 1, create_month: {$month: '$createdAt'}}},
+        const sum_data = await BillModel.aggregate([
+            {$project: {name: 1, price_total: 1, create_month: {$month: '$createdAt'}}},
             {$match: {create_month: month}},
-            {$group: {_id : null,sum : { $sum: "$proceeds" }}}
+            {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ])
         const year_data=[];
         for (let i = 1; i <= 12; i++){
-            const sum_data = await BankModel.aggregate([
-                {$project: {name: 1, price: 1, 
+            const sum_data = await BillModel.aggregate([
+                {$project: {name: 1, price_total: 1, 
                             create_month: {$month: '$createdAt'}, 
                             create_year: {$year: '$createdAt'}
                         }
                 },
                 {$match: {create_month: i, create_year: year}},
-                {$group: {_id : null,sum : { $sum: "$proceeds" }}}
+                {$group: {_id : null,sum : { $sum: "$price_total" }}}
             ])
             let month = {month: i};
-            //const month_data = Object.assign(month, sum_data);
-            year_data.push(sum_data)
+            const month_data = Object.assign(month, sum_data);
+            year_data.push(month_data)
         }
         res.status(200).json({sum_data: year_data});
     } catch (error) {
