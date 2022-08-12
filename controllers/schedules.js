@@ -72,7 +72,7 @@ export const showSchedule = async (req, res) => {
 export const confirm = async (req, res) => {
     try {
         let current_schedule = await ScheduleModel.findById(req.params.id);
-        ScheduleModel.findByIdAndUpdate(req.params.id, {status: !current_schedule.status}, {new: true})
+        ScheduleModel.findByIdAndUpdate(req.params.id, {'status': !current_schedule.status}, {new: true})
         .then((schedule) => res.json({status: "ok" ,schedule}));
     } catch (error) {
         res.status(500).json({ error: error });

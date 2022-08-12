@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 // @route POST api/auth/login
 // @desc Login account
 // @access Public
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
 	const { email, password } = req.body
 
 	// Simple validation
@@ -34,13 +34,16 @@ export const login = async (req, res) => {
 			{ accountId: account._id },
 			process.env.ACCESS_TOKEN_SECRET
 		)
-
+		req.user_id = account._id
+		
 		res.json({
 			success: true,
 			message: 'account logged in successfully',
 			accessToken,
-			account
-		})
+			account,
+			
+		});
+		next();
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ success: false, message: 'Internal server error' })
@@ -48,6 +51,6 @@ export const login = async (req, res) => {
 };
 export const logout = async (req, res) => {
 
-	res.status(200).json("Logged out successfully")
+	res.status(200).json("Logged out successfully");
 }
 

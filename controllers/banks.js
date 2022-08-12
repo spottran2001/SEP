@@ -1,4 +1,4 @@
-import { BankModel } from "../models/Banks.js";
+import { BankModel } from "../models/BankModel.js";
 
 export const getBanks = async (req, res) => {
     try {

@@ -29,7 +29,7 @@ export const statistics = async (req, res) => {
         // );
         //const sum_data = await DishModel.find({ recipe:  /1/});
         const sum_data = await BillModel.aggregate([
-            {$project: {name: 1, price_total: 1, create_month: {$month: '$createdAt'}}},
+            {$project: {name: 1, price: 1, create_month: {$month: '$createdAt'}}},
             {$match: {create_month: month}},
             {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ])
