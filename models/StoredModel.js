@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
         require: true,
     },
     price: {
-        type: Array,
+        type: Number,
         require: true,
     },
     payment_type:{

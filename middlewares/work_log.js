@@ -29,23 +29,19 @@ export const logoutUpdate = async (req, res, next) => {
                         + current_time.getMonth().toString()
                         + current_time.getDate().toString();
 
-        console.log(work_log_days);      
-        console.log(req.accountId);
         let current_work_log = await WorkLogModel.findOne({
                                         account_id: req.accountId, 
                                         work_log_days: work_log_days
                                     })
         
-        console.log(current_work_log);
         let begin_time = current_work_log.createdAt.getUTCHours()*60 
                         + current_work_log.createdAt.getUTCMinutes();  
-        console.log(begin_time);
         
         let end_time = current_time.getUTCHours()*60 
                        + current_time.getUTCMinutes();
         
         const working_time = parseFloat(((end_time - begin_time)/60).toFixed(2))
-        console.log(working_time);
+
         const updateWorkLog = {logout_time: current_time, working_time: working_time}
         await WorkLogModel.findOneAndUpdate({account_id: req.accountId, work_log_days: work_log_days },
                                         updateWorkLog, {new: true})
