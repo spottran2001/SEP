@@ -35,7 +35,7 @@ export const totalStatistics = async (req, res) => {
             {$project: {name: 1, price_total: 1, }},
             {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ]);
-        const bills_total = {bills_total: sum_data};
+        const bills_total = {bills_total: sum_bills};
 
         const sum_momo = await BillModel.aggregate([
             {$project: {name: 1, price_total: 1, }},
@@ -44,13 +44,28 @@ export const totalStatistics = async (req, res) => {
         ]);
         const momo_total = {momo_total: sum_momo};
 
+        const sum_cash = await BillModel.aggregate([
+            {$project: {name: 1, price_total: 1, }},
+            {$match: {payment_type: "cash"}},
+            {$group: {_id : null,sum : { $sum: "$price_total" }}}
+        ]);
+        const cash_total = {cash_total: sum_cash};
+
+        const sum_vnpay = await BillModel.aggregate([
+            {$project: {name: 1, price_total: 1, }},
+            {$match: {payment_type: "momo"}},
+            {$group: {_id : null,sum : { $sum: "$price_total" }}}
+        ]);
+        const vnpay_total = {vnpay_total: sum_vnpay};
+
         const sum_stored = await StoredModel.aggregate([
             {$project: {name: 1, price: 1, }},
             {$group: {_id : null,sum : { $sum: "$price" }}}
         ]);
         const stored_total = {stored_total: sum_stored};
 
-        statistics.push(bills_total, momo_total, stored_total);
+        statistics.push(bills_total, momo_total, 
+            cash_total, vnpay_total, stored_total);
 
         res.status(200).json({statistics});
     } catch (error) {
