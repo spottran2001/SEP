@@ -11,6 +11,6 @@ var jsonParser = bodyParser.json()
 
 router.post('/', jsonParser, statistics);
 
-router.post('/', jsonParser, totalStatistics);
+router.post('/totalStatistics', jsonParser, totalStatistics);
 
 export default router;

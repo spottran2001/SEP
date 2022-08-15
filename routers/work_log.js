@@ -14,6 +14,6 @@ router.get('/', showWorkLog);
 
 router.put('/', updateWorkLog);
 
-router.post('/', Timekeeping);
+router.post('/Timekeeping', Timekeeping);
 
 export default router;
