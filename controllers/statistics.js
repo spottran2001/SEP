@@ -38,21 +38,21 @@ export const totalStatistics = async (req, res) => {
         const bills_total = {bills_total: sum_bills};
 
         const sum_momo = await BillModel.aggregate([
-            {$project: {name: 1, price_total: 1, }},
+            {$project: {name: 1, payment_type: 1, price_total: 1, }},
             {$match: {payment_type: "momo"}},
             {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ]);
         const momo_total = {momo_total: sum_momo};
 
         const sum_cash = await BillModel.aggregate([
-            {$project: {name: 1, price_total: 1, }},
+            {$project: {name: 1, payment_type: 1, price_total: 1, }},
             {$match: {payment_type: "cash"}},
             {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ]);
         const cash_total = {cash_total: sum_cash};
 
         const sum_vnpay = await BillModel.aggregate([
-            {$project: {name: 1, price_total: 1, }},
+            {$project: {name: 1, payment_type: 1, price_total: 1, }},
             {$match: {payment_type: "momo"}},
             {$group: {_id : null,sum : { $sum: "$price_total" }}}
         ]);
