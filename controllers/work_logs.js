@@ -42,7 +42,7 @@ export const Timekeeping = async (req, res) => {
                             create_year: {$year: '$createdAt'}
                         }
                 },
-                {$match: {create_month: month, create_year: year}},
+                {$match: {create_month: month, create_year: year, account_id: req.accountId}},
                 {$group: {_id : null,sum : { $sum: "$working_time" }}}
         ]);      
         res.status(200).json({total_work_logs}); 
