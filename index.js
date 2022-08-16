@@ -16,6 +16,7 @@ import upload from './routers/upload.js';
 import banks from './routers/banks.js';
 import statistics from './routers/statistics.js';
 import notifications from './routers/notifications.js';
+import workLogs from './routers/work_log.js'
 
 dotevn.config();
 const app = express();
