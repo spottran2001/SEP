@@ -10,9 +10,9 @@ var jsonParser = bodyParser.json()
 
 router.get('/', getWorkLog);
 
-router.get('/', showWorkLog);
+router.get('/:id', showWorkLog);
 
-router.put('/', updateWorkLog);
+router.put('/:id', updateWorkLog);
 
 router.post('/Timekeeping', Timekeeping);
 
