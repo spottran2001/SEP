@@ -1,5 +1,5 @@
 import express from "express";
-import { getNotifications, createNotification, updateNotification, deleteNotification, showNotification } from "../controllers/Notifications.js";
+import { getNotifications, createNotification, updateNotification, deleteNotification, showNotification } from "../controllers/notifications.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
