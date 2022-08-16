@@ -1,5 +1,5 @@
 import express from "express";
-import { getWorkLog, updateWorkLog, showWorkLog, Timekeeping} from "../controllers/work_logs.js";
+import { getWorkLog, updateWorkLog, showWorkLog, Timekeeping, showWorkLogPerAccount} from "../controllers/work_logs.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
@@ -15,5 +15,7 @@ router.get('/:id', showWorkLog);
 router.put('/:id', updateWorkLog);
 
 router.post('/Timekeeping', Timekeeping);
+
+router.post('/showWorkLogPerAccount', showWorkLogPerAccount);
 
 export default router;

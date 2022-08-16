@@ -50,3 +50,13 @@ export const Timekeeping = async (req, res) => {
         res.status(500).json({ error: error });
     }
 };
+
+export const showWorkLogPerAccount = async (req, res) => {
+    try {
+        const work_logs = await WorkLogModel.find({account_id: req.body.account})
+              
+        res.status(200).json({work_logs}); 
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
