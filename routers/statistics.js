@@ -13,6 +13,6 @@ router.post('/', jsonParser, statistics);
 
 router.post('/totalStatistics', jsonParser, totalStatistics);
 
-router.post('/totalStatistics', jsonParser, statisticsPerMonth);
+router.post('/statisticsPerMonth', jsonParser, statisticsPerMonth);
 
 export default router;
