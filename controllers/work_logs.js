@@ -46,7 +46,7 @@ export const Timekeeping = async (req, res) => {
                             }
                     },
                     {$match: {create_month: month, create_year: year,
-                             create_day: days_of_month, account_id: req.accountId}},
+                             create_day: i, account_id: req.accountId}},
                     {$group: {_id : null,sum : { $sum: "$working_time" }}}
             ]);
             let day = {day: i};
