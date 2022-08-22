@@ -34,18 +34,26 @@ export const showWorkLog = async (req, res) => {
 
 export const Timekeeping = async (req, res) => {
     try {
-        const {month, year} = req.body;
+        const {month, year, days_of_month} = req.body;
 
-        const total_work_logs = await WorkLogModel.aggregate([
-            {$project: {name: 1, working_time: 1, 
-                            create_month: {$month: '$createdAt'}, 
-                            create_year: {$year: '$createdAt'}
-                        }
-                },
-                {$match: {create_month: month, create_year: year, account_id: req.accountId}},
-                {$group: {_id : null,sum : { $sum: "$working_time" }}}
-        ]);      
-        res.status(200).json({total_work_logs}); 
+        const month_data=[];
+        for (let i = 1; i <= days_of_month; i++){
+            const total_work_logs = await WorkLogModel.aggregate([
+                {$project: {name: 1, working_time: 1, 
+                                create_month: {$month: '$createdAt'}, 
+                                create_year: {$year: '$createdAt'},
+                                create_day: {$dayOfMonth: '$createdAt'}
+                            }
+                    },
+                    {$match: {create_month: month, create_year: year,
+                             create_day: days_of_month, account_id: req.accountId}},
+                    {$group: {_id : null,sum : { $sum: "$working_time" }}}
+            ]);
+            let day = {day: i};
+            const day_data = Object.assign(month, total_work_logs);
+            month_data.push(day_data)
+        }
+        res.status(200).json({month_data}); 
     } catch (error) {
         res.status(500).json({ error: error });
     }
