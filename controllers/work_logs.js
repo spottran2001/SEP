@@ -50,7 +50,7 @@ export const Timekeeping = async (req, res) => {
                     {$group: {_id : null,sum : { $sum: "$working_time" }}}
             ]);
             let day = {day: i};
-            const day_data = Object.assign(month, total_work_logs);
+            const day_data = Object.assign(day, total_work_logs);
             month_data.push(day_data)
         }
         res.status(200).json({month_data}); 

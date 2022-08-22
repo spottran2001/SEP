@@ -72,3 +72,29 @@ export const totalStatistics = async (req, res) => {
         res.status(500).json({ error: error });
     }
 };
+
+export const statisticsPerMonth = async (req, res) => {
+    try {
+        const {month, year, days_of_month} = req.body;
+
+        const month_data=[];
+        for (let i = 1; i <= days_of_month; i++){
+            const sum_data = await BillModel.aggregate([
+                {$project: {name: 1, price_total: 1, 
+                            create_month: {$month: '$createdAt'}, 
+                            create_year: {$year: '$createdAt'},
+                            create_day: {$dayOfMonth: '$createdAt'}
+                        }
+                },
+                {$match: {create_month: month, create_year: year, create_day: i}},
+                {$group: {_id : null,sum : { $sum: "$price_total" }}}
+            ])
+            let day = {day: i};
+            const day_data = Object.assign(day, sum_data);
+            month_data.push(day_data)
+        }
+        res.status(200).json({month_data});
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};

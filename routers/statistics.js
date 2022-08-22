@@ -1,5 +1,5 @@
 import express from "express";
-import { statistics, totalStatistics } from "../controllers/statistics.js";
+import { statistics, totalStatistics, statisticsPerMonth } from "../controllers/statistics.js";
 import bodyParser  from "body-parser";
 
 
@@ -12,5 +12,7 @@ var jsonParser = bodyParser.json()
 router.post('/', jsonParser, statistics);
 
 router.post('/totalStatistics', jsonParser, totalStatistics);
+
+router.post('/totalStatistics', jsonParser, statisticsPerMonth);
 
 export default router;
