@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
 
 app.use('/auth', auth);
 
-app.use('/accounts', verifyToken, decentralization, accounts);
+app.use('/accounts', verifyToken, accounts);
 
 app.use('/dishTypes', verifyToken, dishTypes);
 
