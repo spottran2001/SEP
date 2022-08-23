@@ -28,6 +28,13 @@ export const login = async (req, res, next) => {
 				.status(400)
 				.json({ success: false, message: 'Incorrect email or password' })
 
+		// account status
+		const account_status = account.account_status == 1
+		if (!account_status)
+			return res
+				.status(403)
+				.json({ success: false, message: 'Your account is no longer authorized to login' })
+
 		// All good
 		// Return token
 		const accessToken = jwt.sign(
