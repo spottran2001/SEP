@@ -17,6 +17,7 @@ import banks from './routers/banks.js';
 import statistics from './routers/statistics.js';
 import notifications from './routers/notifications.js';
 import workLogs from './routers/work_log.js'
+import workTimes from './routers/work_times.js'
 
 dotevn.config();
 const app = express();
@@ -56,6 +57,8 @@ app.use('/banks', verifyToken, banks);
 app.use('/statistics', verifyToken, statistics);
 
 app.use('/workLogs', workLogs);
+
+app.use('/workTimes', workTimes);
 
 app.use('/notifications', verifyToken, notifications);
 
