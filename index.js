@@ -56,9 +56,9 @@ app.use('/banks', verifyToken, banks);
 
 app.use('/statistics', verifyToken, statistics);
 
-app.use('/workLogs', workLogs);
+app.use('/workLogs', verifyToken, workLogs);
 
-app.use('/workTimes', workTimes);
+app.use('/workTimes', verifyToken, workTimes);
 
 app.use('/notifications', verifyToken, notifications);
 
