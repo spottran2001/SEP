@@ -25,6 +25,7 @@ const schema = new mongoose.Schema({
     note: {
         type: String,
         require: true,
+        default: null,
     },
     month: {
         type: Number,
