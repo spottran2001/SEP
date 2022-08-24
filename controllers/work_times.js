@@ -56,7 +56,7 @@ export const showWorkTime = async (req, res) => {
     }
 };
 
-export const showWWorkTimePerAccount = async (req, res) => {
+export const showWorkTimePerAccount = async (req, res) => {
     try {
         const work_logs = await WorkTimeModel.find({account_id: req.body.account})
               
