@@ -1,5 +1,6 @@
 import express from "express";
-import { getWorkTimes, createWorkTime, updateWorkTime, deleteWorkTime, showWorkTime } from "../controllers/workTimes.js";
+import { getWorkTimes, createWorkTime, updateWorkTime,
+     deleteWorkTime, showWorkTime, showWWorkTimePerAccount } from "../controllers/work_times.js";
 import bodyParser  from "body-parser";
 
 const router = express.Router();
@@ -17,5 +18,7 @@ router.put('/:id', updateWorkTime);
 router.delete('/:id', deleteWorkTime);
 
 router.get('/:id', showWorkTime);
+
+router.post('/showWWorkTimePerAccount', showWWorkTimePerAccount);
 
 export default router;

@@ -56,3 +56,12 @@ export const showWorkTime = async (req, res) => {
     }
 };
 
+export const showWWorkTimePerAccount = async (req, res) => {
+    try {
+        const work_logs = await WorkTimeModel.find({account_id: req.body.account})
+              
+        res.status(200).json({work_logs}); 
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+};
