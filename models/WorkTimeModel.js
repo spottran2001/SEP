@@ -38,6 +38,11 @@ const schema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    paymentStatus: {
+        type: Boolean,
+        require: true,
+        default: false,
+    },
   },
   { timestamps: true, }
 );
