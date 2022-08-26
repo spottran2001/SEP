@@ -2,7 +2,6 @@ import { WorkLogModel } from "../models/WokrLogModel.js";
 
 export const createWorkLog = async (req, res, next) => {
     try {
-        console.log('create worklog')
         const current_time = new Date();
         const work_log_days = current_time.getFullYear().toString()
                         + current_time.getMonth().toString()

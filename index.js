@@ -74,3 +74,4 @@ mongoose
         console.log('err', err);
     });
 
+export default app;

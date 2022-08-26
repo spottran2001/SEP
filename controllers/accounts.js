@@ -17,7 +17,6 @@ export const createAccount = async (req, res) => {
         const account = new AccountModel(newAccount);
         await account.save();
     
-        console.log(account)
         res.status(200).json(account);
     } catch (error) {
         res.status(500).json({ error: error });
