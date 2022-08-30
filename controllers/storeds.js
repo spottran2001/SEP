@@ -2,7 +2,7 @@ import { StoredModel } from "../models/StoredModel.js";
 
 export const getStoreds = async (req, res) => {
     try {
-        const storeds = await StoredModel.find();
+        const storeds = await StoredModel.find().sort({createdAt: -1});
 
         res.status(200).json(storeds);
     } catch (error) {

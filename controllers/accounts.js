@@ -2,7 +2,7 @@ import { AccountModel } from "../models/AccountModel.js";
 
 export const getAccounts = async (req, res) => {
     try {
-        const accounts = await AccountModel.find();
+        const accounts = await AccountModel.find().sort({full_name: 1});
 
         res.status(200).json(accounts);
     } catch (error) {

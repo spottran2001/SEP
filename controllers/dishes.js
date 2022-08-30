@@ -2,7 +2,7 @@ import { DishModel } from "../models/DishModel.js";
 
 export const getDishes = async (req, res) => {
     try {
-        const dishes = await DishModel.find();
+        const dishes = await DishModel.find().sort({name: 1});
 
         res.status(200).json(dishes);
     } catch (error) {
