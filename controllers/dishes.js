@@ -17,7 +17,6 @@ export const createDish = async (req, res) => {
         const dish = new DishModel(newDish);
         await dish.save();
     
-        console.log(dish)
         res.status(200).json(dish);
     } catch (error) {
         res.status(500).json({ error: error });

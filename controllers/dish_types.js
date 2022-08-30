@@ -17,7 +17,6 @@ export const createDishType = async (req, res) => {
         const dish_type = new DishTypeModel(newDishType);
         await dish_type.save();
     
-        console.log(dish_type)
         res.status(200).json(dish_type);
     } catch (error) {
         res.status(500).json({ error: error });

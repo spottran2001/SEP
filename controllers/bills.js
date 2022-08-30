@@ -2,7 +2,7 @@ import { BillModel } from "../models/BillModel.js";
 
 export const getBills = async (req, res) => {
     try {
-        const bills = await BillModel.find();
+        const bills = await BillModel.find().sort({createdAt: -1});
 
         res.status(200).json(bills);
     } catch (error) {
@@ -20,7 +20,6 @@ export const createBill = async (req, res) => {
         const bill = new BillModel(newBill);
         await bill.save();
     
-        console.log(bill)
         res.status(200).json(bill);
     } catch (error) {
         res.status(500).json({ error: error });
